@@ -1,16 +1,17 @@
-const express = require('express');
-const router = express();
-
-router.set('view engine', 'ejs');
-
-router.use(express.urlencoded({extended: true}));
+const express = require('express')
+const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.render('login');
-});
+    res.render('login')
+})
 
 router.post('/', (req, res) => {
+    // login
+    res.redirect('/home')
+})
 
-});
+router.get('/register', (req, res) => {
+    res.render('register')
+})
 
-module.exports = router;
+module.exports = router
