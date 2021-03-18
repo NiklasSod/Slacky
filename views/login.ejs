@@ -1,18 +1,22 @@
-<p>Please log in!</p>
-<form action="/" method="POST">
-    <div>
-        <label for="">Name:</label>
-        <input type="text" name="username">
-    </div>
-    <div>
-        <label for="">Password:</label>
-        <input type="password" name="password">
-    </div>
-    <div>
-        <input type="submit" value="Log in">
-    </div>
-</form>
-<p>Not a user? Register here!</p>
-<form action="/register" method="GET">
-    <input type="submit" value="Register">
-</form>
+<div class="d-flex justify-content-center">
+    <form action="/" method="POST" class="col-md-3">
+        <br>
+        <h1 class="h3 mb-3 fw-normal text-center">Welcome back - Please sign in</h1>
+        <br>
+        <label for="inputEmail" name="name" class="visually-hidden">Name</label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input 
+            type="password" 
+            name="password" 
+            id="inputPassword" 
+            class="form-control" 
+            placeholder="Password" 
+            required>
+        
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+</div>
+<br>
+<p class="text-center">Not a user? Register <a href="/register">here</a>!</p>
