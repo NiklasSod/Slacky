@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express')
 const app = express()
+const path = require('path')
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const flash = require('connect-flash')
@@ -18,11 +19,12 @@ app.use(expressEjsLayout)
 // BodyParser
 app.use(express.urlencoded({extended: true}))
 
+// Public path
+// app.use('/public', express.static(path.join(__dirname, 'public')))
+
 // Routes
-const loginRouter = require('./routes/login.js')
-const homeRouter = require('./routes/home.js')
-app.use('/', loginRouter)
-app.use('/home', homeRouter)
+app.use('/', require('./routes/login.js'))
+app.use('/home', require('./routes/home.js'))
 
 // Open connection
 const port = 3000;

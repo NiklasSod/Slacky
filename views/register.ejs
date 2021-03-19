@@ -1,10 +1,14 @@
 <div class="d-flex justify-content-center">
     <form action="" method="POST" class="col-md-3">
         <br>
-        <h1 class="h3 mb-3 fw-normal text-center">Register new user</h1>
+        <div class="mb-3 fw-normal text-center">
+            <h3>Welcome to Slacky</h3>
+            <h3>Register new user</h3>
+        </div>
+        
         <br>
-        <label for="inputEmail" name="name" class="visually-hidden">Name</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputEmail" class="visually-hidden">Name</label>
+        <input type="text" name="name" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
 
         <label for="inputPassword" class="visually-hidden">Password</label>
         <input 
@@ -15,8 +19,9 @@
             placeholder="Password" 
             required>
         
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
     </form>
 </div>
 <br>
 <p class="text-center">Already a user? Login <a href="/">here!</a></p>
+<%- include('partials/messages') %>
