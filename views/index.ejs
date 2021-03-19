@@ -1,5 +1,5 @@
 <h1>Homepage</h1>
-<form method="post" action="/create">
+<form method="post" action="/home/create">
     <input type="text" name="name" placeholder="Channel name here" /><br />
     <input
         type="text"
@@ -18,7 +18,7 @@
     <% channels.forEach( channel => { %>
         <tr>
             <td><a href="/channel/<%= channel._id %>"><%= channel.name %></a></td>
-            <td><a href="/delete/<%= channel._id %>">X</a></td>
+            <td><a href="/home/delete/<%= channel._id %>">X</a></td>
         </tr>
     <% }) %>
 </table>

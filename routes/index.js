@@ -13,8 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-  console.log(req.body)
-  console.log('kalle')
   const channel = new Channel({
     name: req.body.name,
     description: req.body.description || '',
@@ -23,15 +21,16 @@ router.post('/create', (req, res) => {
   channel.save((err) => {
     if (err) return console.error(err);
     console.log('Channel created.');
-    res.redirect('/');
+    res.redirect('/home');
   });
 });
 
 router.get('/delete/:id', (req, res) => {
+  console.log("#ASDASD")
   Channel.deleteOne({ _id: req.params.id }, (err, data) => {
     if (err) return console.error(err);
     console.log(req.params.id + 'deleted');
-    res.redirect('/');
+    res.redirect('/home');
   });
 });
 
