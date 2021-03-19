@@ -1,6 +1,7 @@
 const { response } = require('express')
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 const User = require('../models/users')
 
 router.get('/', (req, res) => {
@@ -29,8 +30,25 @@ router.post('/register', (req, res) => {
         errors.push({msg: 'Password must be at least six characters long.'})
     } if(errors.length > 0) {
         res.render('register', {errors})
+    } else {
+        const newUser = new User({
+            name, password
+        })
+
+        bcrypt.hash(password, 10, (err, hash) => {
+            newUser.password = hash
+            newUser
+                .save()
+                .then(value => {
+                    req.flash('success_msg', 'You are registered to Slacky!')
+                    res.redirect('/')
+                })
+                .catch(err => {
+                    req.flash('error_msg', 'Username already exists!')
+                    res.redirect('/register')
+                })
+        })
     }
-    res.redirect('/')
 })
 
 module.exports = router

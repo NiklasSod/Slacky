@@ -5,3 +5,15 @@
         </div>
     <% } %> 
 <% } %> 
+
+<% if(success_msg != '') { %>
+    <div class="alert alert-success col-md-3 text-center mx-auto" role="alert">
+        <%= success_msg %> 
+    </div>
+<% } %> 
+
+<% if(error_msg != '') { %>
+    <div class="alert alert-success col-md-3 text-center mx-auto" role="alert">
+        <%= error_msg %> 
+    </div>
+<% } %> 
