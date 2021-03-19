@@ -1,7 +1,7 @@
 // Dependencies
 const express = require('express')
 const app = express()
-// const path = require('path')
+const path = require('path')
 const flash = require('connect-flash')
 const passport = require('passport')
 const mongoose = require('mongoose')
@@ -21,7 +21,7 @@ app.use(expressEjsLayout)
 app.use(express.urlencoded({extended: true}))
 
 // Public path
-// app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use('/public', express.static(path.join(__dirname, 'public')))
 
 // Sessions
 app.use(session({
@@ -31,6 +31,7 @@ app.use(session({
 }))
 
 // Passport
+require('./config/passport')(passport)
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -45,7 +46,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/', require('./routes/login.js'))
-app.use('/home', require('./routes/home.js'))
+app.use('/home', require('./routes/index.js'))
+app.use('/channel', require('./routes/channel.js'))
 
 // Open connection
 const port = 3000;
