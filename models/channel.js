@@ -5,19 +5,17 @@ const channelSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 1,
-        maxLength: 100,
+        maxLength: 100
     },
     description: {
-        type: String,
-        minLength: 1,
-        maxLength: 200,
+        type: String
     },
     private: {
         type: Boolean,
         required: true,
-        default: false,
+        default: false
     },
-    posts: [],
+    posts: []
 });
 
 module.exports = mongoose.model('Channel', channelSchema);

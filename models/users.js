@@ -13,6 +13,8 @@ const UserSchema = new mongoose.Schema({
         minlength: 6,
         hide: true
     },
+    // isAdmin
+    // profilePhoto
     date: {
         type: Date,
         default: Date.now
