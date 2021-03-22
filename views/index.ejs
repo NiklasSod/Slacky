@@ -1,25 +1,18 @@
 <%- include('block/header') %>
-<h1>Homepage</h1>
-<form method="post" action="/home/create">
-    <input type="text" name="name" placeholder="Channel name here" /><br />
-    <input
-        type="text"
-        name="description"
-        placeholder="Channel description here"
-    /><br />
-    <span>Private</span><input type="checkbox" name="private" /><br />
-    <input type="submit" value="Create Channel" />
-</form>
-<h2>Channels:</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Delete</th>
-    </tr>
-    <% channels.forEach( channel => { %>
-        <tr>
-            <td><a href="/channel/<%= channel._id %>"><%= channel.name %></a></td>
-            <td><a href="/home/delete/<%= channel._id %>">X</a></td>
-        </tr>
-    <% }) %>
-</table>
+<%- include ('./block/sidebar') %>
+<br>
+<div>
+    <form method="post" action="/home/create">
+        <input type="text" name="name" placeholder="Channel name here" required/><br />
+        <input
+            type="text"
+            name="description"
+            placeholder="Channel description here"
+            maxlength="50"
+            required
+        /><br />
+        <span>Private? </span><input type="checkbox" name="private" /><br />
+        <input type="submit" value="Create Channel" />
+    </form>
+</div>
+<%- include('block/footer') %>
