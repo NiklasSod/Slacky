@@ -9,13 +9,14 @@ const Post = require('../models/post');
 router.get('/:id', ensureAuthenticated, (req, res) => {
     Channel.findById(req.params.id, (err, data) => {
         if (err) return console.error(err);
-        res.render('channel.ejs', { channel: data });
+        res.render('channel.ejs', { channel: data, user: req.user  });
     });
 });
 
 router.post('/:id', ensureAuthenticated, (req, res) => {
     const post = new Post({
-        by: req.body.by,
+        by: req.user.name,
+        byId: req.user._id,
         content: req.body.content,
     });
     Channel.updateOne(

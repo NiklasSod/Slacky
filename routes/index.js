@@ -8,7 +8,7 @@ const Channel = require('../models/channel');
 router.get('/', ensureAuthenticated, (req, res) => {
   Channel.find((err, data) => {
     if (err) return console.error(err);
-    res.render('index.ejs', { channels: data });
+    res.render('index.ejs', { channels: data, user: req.user });
   });
 });
 
@@ -28,9 +28,14 @@ router.post('/create', ensureAuthenticated, (req, res) => {
 router.get('/delete/:id', ensureAuthenticated, (req, res) => {
   Channel.deleteOne({ _id: req.params.id }, (err, data) => {
     if (err) return console.error(err);
-    console.log(req.params.id + 'deleted');
     res.redirect('/home');
   });
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are now logged out!')
+  res.redirect('/')
 });
 
 module.exports = router;

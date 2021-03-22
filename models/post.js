@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+const Schema = mongoose.Schema;
 
 const postSchema = new mongoose.Schema({
     by: {
@@ -12,6 +13,11 @@ const postSchema = new mongoose.Schema({
         required: true,
         minLength: 1,
         maxLength: 1000
+    },
+    byId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     },
     date: {
         type: String,
