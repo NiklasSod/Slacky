@@ -24,6 +24,7 @@
     "express-ejs-layouts": "^2.5.0",
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.1",
+    "http": "^0.0.1-security",
     "moment": "^2.29.1",
     "mongoose": "^5.12.0",
     "passport": "^0.4.1",

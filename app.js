@@ -7,6 +7,8 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
+const http = require('http').Server(app)
+const io = require('socket.io')(http);
 
 // Connect to database
 mongoose.connect('mongodb://localhost:27017/slacky')
@@ -51,6 +53,6 @@ app.use('/channel', require('./routes/channel.js'))
 
 // Open connection
 const port = 3000;
-app.listen(port, () => {
+http.listen(port, () => {
     console.log(`Listening to port ${port}`)
 })
