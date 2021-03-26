@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.use(express.urlencoded({ extended: true }));
+const { ensureAuthenticated } = require('../config/auth.js');
 
 const Channel = require('../models/channel');
 
-router.get('/', (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
   Channel.find((err, data) => {
     if (err) return console.error(err);
-    res.render('index.ejs', { channels: data });
+    res.render('index.ejs', { channels: data, user: req.user });
   });
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', ensureAuthenticated, (req, res) => {
   const channel = new Channel({
     name: req.body.name,
     description: req.body.description || '',
@@ -25,13 +25,17 @@ router.post('/create', (req, res) => {
   });
 });
 
-router.get('/delete/:id', (req, res) => {
-  console.log("#ASDASD")
+router.get('/delete/:id', ensureAuthenticated, (req, res) => {
   Channel.deleteOne({ _id: req.params.id }, (err, data) => {
     if (err) return console.error(err);
-    console.log(req.params.id + 'deleted');
     res.redirect('/home');
   });
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are now logged out!')
+  res.redirect('/')
 });
 
 module.exports = router;

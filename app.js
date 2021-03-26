@@ -7,6 +7,9 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
+// "The http module has additional functionality such as managing sockets."
+const http = require('http').Server(app)
+const io = require('socket.io')(http);
 
 // Connect to database
 mongoose.connect('mongodb://localhost:27017/slacky')
@@ -48,9 +51,10 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/login.js'))
 app.use('/home', require('./routes/index.js'))
 app.use('/channel', require('./routes/channel.js'))
+app.use('/api', require('./routes/api'))
 
 // Open connection
 const port = 3000;
-app.listen(port, () => {
+http.listen(port, () => {
     console.log(`Listening to port ${port}`)
 })

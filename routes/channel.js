@@ -1,21 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-router.use(express.urlencoded({ extended: true }));
+const { ensureAuthenticated } = require('../config/auth.js');
 
 const Channel = require('../models/channel');
 const Post = require('../models/post');
 
-router.get('/:id', (req, res) => {
+router.get('/:id', ensureAuthenticated, (req, res) => {
     Channel.findById(req.params.id, (err, data) => {
         if (err) return console.error(err);
-        res.render('channel.ejs', { channel: data });
+        res.render('channel.ejs', { channel: data, user: req.user  });
     });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id', ensureAuthenticated, (req, res) => {
     const post = new Post({
-        by: req.body.by,
+        by: req.user.name,
+        byId: req.user._id,
         content: req.body.content,
     });
     Channel.updateOne(

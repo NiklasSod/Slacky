@@ -1,9 +1,7 @@
-const { response } = require('express')
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/users')
-const flash = require('connect-flash')
 const passport = require('passport')
 
 router.get('/', (req, res) => {
@@ -24,10 +22,6 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
     const {name, password} = req.body
-    // Deconstructed code instead of writing
-    // const name = req.body.name & pass
-
-    // console.log(`Name: ${name}, password: ${password}`)
     const errors = []
     if (name.length < 3 || name.length > 12) {
         errors.push({msg: 'Name length must be between three and twelve characters long.'})
