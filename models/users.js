@@ -14,7 +14,10 @@ const UserSchema = new mongoose.Schema({
         hide: true
     },
     // isAdmin
-    // profilePhoto
+    profilePhoto: {
+        type: String,
+        default: '/public/styles/svg/profile_pic.svg'
+    },
     date: {
         type: Date,
         default: Date.now
