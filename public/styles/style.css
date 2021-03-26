@@ -6,3 +6,7 @@ body {
     max-width: 220px;
     max-height: 150px;
 }
+
+#home_icon {
+    color: yellow;
+}
