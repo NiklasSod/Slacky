@@ -1,7 +1,8 @@
 <%- include('block/header') %>
-<h3>Channel name: <%= channel.name %></h3>
-<h3>About: <%= channel.description %></h3>
-<h4>Posts:</h4>
+<h3> <span class="text-primary">Channel name: </span><%= channel.name %></h3>
+<% if(channel.description != "") { %> 
+<h3> <span class="text-info">About: </span><%= channel.description %></h3>
+<% } %> 
 <div class="card">
     <ul class="card-body">
         <% channel.posts.forEach( post => { %>
