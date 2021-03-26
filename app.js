@@ -7,6 +7,7 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
+const fileUpload = require('express-fileupload')
 // "The http module has additional functionality such as managing sockets."
 const http = require('http').Server(app)
 const io = require('socket.io')(http);
@@ -25,6 +26,10 @@ app.use(express.urlencoded({extended: true}))
 
 // Public path
 app.use('/public', express.static(path.join(__dirname, 'public')))
+
+// Fileupload path
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(fileUpload({ createParentPath: true }));
 
 // Sessions
 app.use(session({
@@ -52,6 +57,7 @@ app.use('/', require('./routes/login.js'))
 app.use('/home', require('./routes/index.js'))
 app.use('/channel', require('./routes/channel.js'))
 app.use('/api', require('./routes/api'))
+app.use('/profile', require('./routes/profile'))
 
 // Open connection
 const port = 3000;

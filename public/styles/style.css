@@ -1,4 +1,8 @@
-/* .footer {
-    position: fixed,
-    position: absolute
-} */
+body {
+    padding-bottom: 60px;
+}
+
+#small_pic {
+    max-width: 220px;
+    max-height: 150px;
+}

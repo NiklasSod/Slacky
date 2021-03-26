@@ -23,9 +23,7 @@ fetchUsers = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // fetchChannels();
-    console.log("hi")
     fetchUsers();
-    console.log("hi2")
 });
 
 
