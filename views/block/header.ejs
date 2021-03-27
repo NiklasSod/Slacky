@@ -1,7 +1,7 @@
-<nav class="navbar navbar-light bg-dark container-fluid text-primary">
+<nav class="navbar navbar-light bg-dark text-light container-fluid text-primary">
     <a href="/home">Home</a>
-    <p class="pt-3">Logged in as <%= user.name %>
-        <a href="/profile"><img src="/public/styles/svg/home.svg" alt="profileHome"></a>
+    <p id="home_icon" class="pt-3">Logged in as <%= user.name %>
+        <a href="/profile"><img id="home_icon" src="/public/styles/svg/home.svg" alt="profileHome"></a>
     </p>
     <a href="/home/logout">Log Out</a>
 </nav>
