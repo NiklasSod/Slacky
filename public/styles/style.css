@@ -10,3 +10,7 @@ body {
 #usersUl {
     list-style-type: none;
 }
+
+#inputWidth {
+    width: 100%;
+}

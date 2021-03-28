@@ -4,13 +4,8 @@ renderUsers = (users) => {
     users.forEach((user) => {
         const li = document.createElement('li');
         li.id = user._id;
-        /* const img = document.createElement('img');
-        img.classList.add('icon_image');
-        img.src = user.profilePhoto;
-        img.alt = user.name;
-        li.appendChild(img); */
         const a = document.createElement('a');
-        a.href = `../channels/startDM/${user._id}`;
+        // a.href = `../channels/startDM/${user._id}`;
         a.innerHTML = user.name;
         a.style.textDecoration = "none"
         li.appendChild(a);

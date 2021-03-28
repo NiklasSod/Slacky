@@ -21,26 +21,30 @@
                 </table>
             </ul>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3">
+            <h2 class="text-center">New channel</h2>
+            <br>
+            <div class="border border-2 border-secondary rounded p-3">
+                <form method="post" action="/home/create">
+                    <input id="inputWidth" type="text" name="name" placeholder="Channel name here" maxlength="30" required/><br />
+                    <input
+                        id="inputWidth"
+                        type="text"
+                        name="description"
+                        placeholder="Channel description here"
+                        maxlength="50"
+                    /><br />
+                    <span>Private? </span><input type="checkbox" name="private" /><br />
+                    <input type="submit" value="Create Channel" />
+                    <br>
+                </form>
+            </div>
+            
+        </div>
+        <div class="col-md-4">
             <h3 class="text-center">Users</h3>
             <ul id="usersUl">
             </ul>
-        </div>
-        <div class="col-md-2">
-            <h2 class="text-center">New channel</h2>
-            <br>
-            <form method="post" action="/home/create">
-                <input type="text" name="name" placeholder="Channel name here" maxlength="30" required/><br />
-                <input
-                    type="text"
-                    name="description"
-                    placeholder="Channel description here"
-                    maxlength="50"
-                /><br />
-                <span>Private? </span><input type="checkbox" name="private" /><br />
-                <input type="submit" value="Create Channel" />
-                <br><br>
-            </form>
         </div>
     </div>
 </div> 
