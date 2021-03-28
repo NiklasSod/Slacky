@@ -7,6 +7,10 @@ body {
     max-height: 150px;
 }
 
-#home_icon {
-    color: yellow;
+#usersUl {
+    list-style-type: none;
+}
+
+#inputWidth {
+    width: 100%;
 }

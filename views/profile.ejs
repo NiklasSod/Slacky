@@ -7,14 +7,14 @@
         <br><br>
         <div class="col-md-4 border-2 border-end">
             <form method="POST" action="/profile/editName">
-                <input type="text" name="newUserName" value="<%= user.name %>" />
+                <input class="form-control" type="text" name="newUserName" value="<%= user.name %>" />
                 <br><br>
                 <input type="submit" class="btn btn-primary" value="Save change" />
             </form>
         </div>
         <div class="col-md-5">
             <form method="POST" enctype="multipart/form-data" action="/profile/photo">
-                <input type="file" name="profile_photo">
+                <input class="form-control" type="file" name="profile_photo">
                 <br><br>
                 <input type="submit" class="btn btn-primary" value="Save change" />
             </form>

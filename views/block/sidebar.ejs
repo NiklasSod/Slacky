@@ -1,41 +1,50 @@
 <div class="container mt-3">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4 mx-auto">
             <h3 class="text-center">Channels</h3>
             <ul id="channelsUl">
                 <table class="container-fluid table table-condensed table-hover table-striped table-bordered">
                     <tr class="d-flex">
-                        <th class="col-8">Name</th>
-                        <th class="col-4">Delete</th>
+                        <th class="col-10">Name</th>
+                        <th class="col-2">Delete</th>
                     </tr>
                     <% channels.forEach( channel => { %>
                         <tr class="d-flex">
-                            <td class="col-8"><a href="/channel/<%= channel._id %>"><%= channel.name %></a></td>
-                            <td class="col-4"><a href="/home/delete/<%= channel._id %>">X</a></td>
+                            <td class="col-10"><a href="/channel/<%= channel._id %>"><%= channel.name %></a></td>
+                            <td class="col-2">
+                                <a href="/home/delete/<%= channel._id %>">
+                                    <img src="/public/styles/svg/trash.svg" alt="trash_icon">
+                                </a>
+                            </td>
                         </tr>
                     <% }) %>
                 </table>
             </ul>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3">
+            <h2 class="text-center">New channel</h2>
+            <br>
+            <div class="border border-2 border-secondary rounded p-3">
+                <form method="post" action="/home/create">
+                    <input id="inputWidth" type="text" name="name" placeholder="Channel name here" maxlength="30" required/><br />
+                    <input
+                        id="inputWidth"
+                        type="text"
+                        name="description"
+                        placeholder="Channel description here"
+                        maxlength="50"
+                    /><br />
+                    <span>Private? </span><input type="checkbox" name="private" /><br />
+                    <input type="submit" value="Create Channel" />
+                    <br>
+                </form>
+            </div>
+            
+        </div>
+        <div class="col-md-4">
             <h3 class="text-center">Users</h3>
             <ul id="usersUl">
             </ul>
-        </div>
-        <div class="col-md-2">
-            <h2 class="text-center">New channel</h2>
-            <br>
-            <form method="post" action="/home/create">
-                <input type="text" name="name" placeholder="Channel name here" required/><br />
-                <input
-                    type="text"
-                    name="description"
-                    placeholder="Channel description here"
-                    maxlength="50"
-                /><br />
-                <span>Private? </span><input type="checkbox" name="private" /><br />
-                <input type="submit" value="Create Channel" />
-            </form>
         </div>
     </div>
 </div> 

@@ -1,11 +1,15 @@
+/* When page is loaded this script fetches users and renders it */
+
 renderUsers = (users) => {
     users.forEach((user) => {
         const li = document.createElement('li');
         li.id = user._id;
         const a = document.createElement('a');
-        a.href = `../channels/startDM/${user._id}`;
+        // a.href = `../channels/startDM/${user._id}`;
         a.innerHTML = user.name;
+        a.style.textDecoration = "none"
         li.appendChild(a);
+        li.style.textAlign = "center"
         usersUl.appendChild(li);
     });
 };
@@ -16,25 +20,12 @@ fetchUsers = () => {
             'Content-Type': 'application/json',
         },
     })
+    .then((res) => res.json())
     .then((data) => {
         renderUsers(data);
     });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // fetchChannels();
     fetchUsers();
 });
-
-
-// putting required on form was way better
-
-// const btn = document.getElementById('submit');
-// let by = document.getElementById('by');
-// let content = document.getElementById('content');
-// const form = document.getElementById('form');
-// form.addEventListener('keyup', (e) => {
-//     by.value === '' || content.value === ''
-//         ? (btn.disabled = true)
-//         : (btn.disabled = false);
-// });

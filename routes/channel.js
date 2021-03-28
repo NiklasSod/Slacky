@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 const { ensureAuthenticated } = require('../config/auth.js');
 
@@ -18,6 +19,7 @@ router.post('/:id', ensureAuthenticated, (req, res) => {
         by: req.user.name,
         byId: req.user._id,
         content: req.body.content,
+        date: moment().format('MMMM Do YYYY, HH:mm')
     });
     Channel.updateOne(
         { _id: req.params.id },

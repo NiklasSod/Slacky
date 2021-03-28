@@ -1,23 +1,27 @@
 <%- include('block/header') %>
-<h3> <span class="text-primary">Channel name: </span><%= channel.name %></h3>
-<% if(channel.description != "") { %> 
-<h3> <span class="text-info">About: </span><%= channel.description %></h3>
-<% } %> 
-<div class="card">
-    <ul class="card-body">
-        <% channel.posts.forEach( post => { %>
-            <h6 class="card-text"><%= post.by + ': ' %></h6>
-            <p><%= post.content %></p>
-            <p><small><%= post.date %></small></p>
-            <hr>
-        <% }) %>
-    </ul>
+<div class="row">
+    <div class="col-md-3 mx-auto mt-2">
+        <h3> <span class="text-primary">Channel name: </span><%= channel.name %></h3>
+        <% if(channel.description != "") { %> 
+        <h3> <span class="text-info">About: </span><%= channel.description %></h3>
+        <% } %> 
+        <form id="form" method="POST" action="/channel/<%= channel._id %>"><br>
+            <textarea name="content" cols="50" rows="6" placeholder="Write your post here" id="content" autocomplete="off" required></textarea><br>
+            <input class="btn btn-lg btn-primary" type="submit" value="Post" id="submit">
+            <br><br>
+        </form>
+    </div>
+
+    <div class="card col-md-6 mx-auto mt-2">
+        <ul class="card-body">
+            <% channel.posts.reverse().forEach( post => { %>
+                <h6 class="card-text"><%= post.by + ': ' %></h6>
+                <p><%= post.content %></p>
+                <p><small><%= post.date %></small></p>
+                <hr>
+            <% }) %>
+        </ul>
+    </div>
 </div>
-
-
-<form id="form" method="POST" action="/channel/<%= channel._id %>"><br>
-    <textarea name="content" cols="30" rows="7" placeholder="Post" id="content" autocomplete="off" required></textarea><br>
-    <input type="submit" value="Post" id="submit">
-</form>
 <%- include('block/footer') %>
 <script src="/public/scripts/script.js"></script>
