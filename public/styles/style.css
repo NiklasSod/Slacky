@@ -7,6 +7,6 @@ body {
     max-height: 150px;
 }
 
-#home_icon {
-    fill: red;
+#usersUl {
+    list-style-type: none;
 }

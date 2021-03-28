@@ -26,11 +26,11 @@
             <ul id="usersUl">
             </ul>
         </div>
-        <div class="col-md-2 border border-2 border-secondary rounded">
+        <div class="col-md-2">
             <h2 class="text-center">New channel</h2>
             <br>
             <form method="post" action="/home/create">
-                <input type="text" name="name" placeholder="Channel name here" required/><br />
+                <input type="text" name="name" placeholder="Channel name here" maxlength="30" required/><br />
                 <input
                     type="text"
                     name="description"
