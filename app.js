@@ -14,8 +14,7 @@ const io = require('socket.io')(http)
 var name = process.env.MONGO_USERNAME;
 var password = process.env.MONGO_PASSWORD;
 
-process.env.NODE_ENV = 'production';
-const con = process.env.MONGODB_URI = 'mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky?retryWrites=true';
+const con = process.env.MONGODB_URI = `mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky?retryWrites=true`;
 // Connect to database
 // mongoose.connect('mongodb://localhost:27017/slacky')
 // mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky`)
