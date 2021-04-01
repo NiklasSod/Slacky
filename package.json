@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "12.18.3"
+    "node": "12.18.3",
+    "npm": "7.6.1"
   },
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
