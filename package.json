@@ -2,6 +2,9 @@
   "name": "slacky",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.18.3"
+  },
   "main": "app.js",
   "scripts": {
     "start": "npx nodemon app"

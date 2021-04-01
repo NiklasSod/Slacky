@@ -14,3 +14,15 @@ body {
 #inputWidth {
     width: 100%;
 }
+
+#tableOnline {
+    padding-left: 2em;
+}
+
+li {
+    list-style: none;
+}
+
+.onlineNow {
+    background-color: green;
+}
