@@ -18,7 +18,7 @@ var password = process.env.MONGO_PASSWORD;
 // mongoose.connect('mongodb://localhost:27017/slacky')
 // mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky`)
 
-mongoose.connect('mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky')
+mongoose.connect('mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky', {useNewUrlParser:true})
     .then(() => console.log('Connected to db'))
     .catch(error => console.log(error))
 
