@@ -15,12 +15,12 @@ var name = process.env.MONGO_USERNAME;
 var password = process.env.MONGO_PASSWORD;
 
 process.env.NODE_ENV = 'production';
-process.env.MONGODB_URI = 'mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky';
+process.env.MONGODB_URI = 'mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky?retryWrites=true';
 // Connect to database
 // mongoose.connect('mongodb://localhost:27017/slacky')
 // mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky`)
 
-mongoose.connect('mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky', {useNewUrlParser:true})
+mongoose.connect('mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky?retryWrites=true', {useNewUrlParser:true})
     .then(() => console.log('Connected to db'))
     .catch(error => console.log(error))
 
