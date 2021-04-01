@@ -72,8 +72,9 @@ io.on('connection', (socket) => {
     console.log('User connected')
 })
 
+
 // Open connection
 const port = process.env.PORT || 3000;
-http.listen(port, "0.0.0.0", () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Listening to port ${port}`)
 })
