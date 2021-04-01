@@ -11,8 +11,8 @@ const fileUpload = require('express-fileupload')
 // "The http module has additional functionality such as managing sockets."
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
-var name = process.env.MONGO_USERNAME;
-var password = process.env.MONGO_PASSWORD;
+var name = process.env.MONGODB_USERNAME;
+var password = process.env.MONGODB_PASSWORD;
 
 const con = process.env.MONGODB_URI = `mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky?retryWrites=true`;
 // Connect to database
