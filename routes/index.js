@@ -2,17 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const { ensureAuthenticated } = require('../config/auth.js');
+router.use('*', ensureAuthenticated)
 
 const Channel = require('../models/channel');
 
-router.get('/', ensureAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
   Channel.find((err, data) => {
     if (err) return console.error(err);
     res.render('index.ejs', { channels: data, user: req.user });
   });
 });
 
-router.post('/create', ensureAuthenticated, (req, res) => {
+router.post('/create', (req, res) => {
   const channel = new Channel({
     name: req.body.name,
     description: req.body.description || '',
@@ -25,7 +26,7 @@ router.post('/create', ensureAuthenticated, (req, res) => {
   });
 });
 
-router.get('/delete/:id', ensureAuthenticated, (req, res) => {
+router.get('/delete/:id', (req, res) => {
   Channel.deleteOne({ _id: req.params.id }, (err, data) => {
     if (err) return console.error(err);
     res.redirect('/home');

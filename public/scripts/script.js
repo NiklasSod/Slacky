@@ -2,15 +2,25 @@
 
 renderUsers = (users) => {
     users.forEach((user) => {
-        const li = document.createElement('li');
-        li.id = user._id;
-        const a = document.createElement('a');
-        // a.href = `../channels/startDM/${user._id}`;
-        a.innerHTML = user.name;
-        a.style.textDecoration = "none"
-        li.appendChild(a);
+
+        usersUl = document.getElementById('usersUl')
+        const li = document.createElement('li')
+        li.id = user._id
         li.style.textAlign = "center"
-        usersUl.appendChild(li);
+
+        const a = document.createElement('a')
+        // a.href = `../channels/startDM/${user._id}`
+        a.innerHTML = user.name
+        a.style.textDecoration = "none"
+
+        li.appendChild(a)
+        usersUl.appendChild(li)
+
+        // usersOnline = document.getElementById('usersOnline')
+        // const li2 = document.createElement('li')
+        // if user online do this -> li2.innerHTML = 'yes'
+        // li2.style.textAlign = "center"
+        // usersOnline.appendChild(li2)
     });
 };
 
@@ -27,5 +37,5 @@ fetchUsers = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchUsers();
-});
+    fetchUsers()
+})

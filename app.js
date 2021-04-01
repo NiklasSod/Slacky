@@ -10,10 +10,13 @@ const session = require('express-session')
 const fileUpload = require('express-fileupload')
 // "The http module has additional functionality such as managing sockets."
 const http = require('http').Server(app)
-const io = require('socket.io')(http);
+const io = require('socket.io')(http)
+var name = process.env.MONGO_USERNAME;
+var password = process.env.MONGO_PASSWORD;
 
 // Connect to database
-mongoose.connect('mongodb://localhost:27017/slacky')
+// mongoose.connect('mongodb://localhost:27017/slacky')
+mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky`)
     .then(() => console.log('Connected to db'))
     .catch(error => console.log(error))
 
@@ -58,6 +61,11 @@ app.use('/home', require('./routes/index.js'))
 app.use('/channel', require('./routes/channel.js'))
 app.use('/api', require('./routes/api'))
 app.use('/profile', require('./routes/profile'))
+
+// Socket.io
+io.on('connection', (socket) => {
+    console.log('User connected')
+})
 
 // Open connection
 const port = 3000;

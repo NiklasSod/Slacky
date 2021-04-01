@@ -2,37 +2,43 @@ const express = require('express')
 const router = express.Router()
 
 const { ensureAuthenticated } = require('../config/auth.js');
+router.use('*', ensureAuthenticated)
 
 const Channel = require('../models/channel');
 const User = require('../models/users')
 
-router.get('/', ensureAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
     Channel.find((err, data) => {
         if (err) return console.error(err);
         res.render('profile', { channels: data, user: req.user });
     });
 })
 
-router.post('/editName', ensureAuthenticated, (req, res) => {
+router.post('/editName', (req, res) => {
     const userName = req.body.newUserName;
-    User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $set: { name: userName } },
-        { new: true },
-        (err, data) => {
-        if (err) {
-            console.log(err);
-            req.flash('error_msg', 'Username already exists!')
-            res.redirect('/profile')
-        } else {
-            req.flash('success_msg', 'Your username is updated!')
-            res.redirect('/profile')
+    if (userName.length < 3 || userName.length > 12) {
+        req.flash('error_msg', 'Username has to be between three and twelve characters')
+        res.redirect('/profile')
+    } else {
+        User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $set: { name: userName } },
+            { new: true },
+            (err, data) => {
+            if (err) {
+                console.log(err);
+                req.flash('error_msg', 'Something went wrong...')
+                res.redirect('/profile')
+            } else {
+                req.flash('success_msg', 'Your username is updated!')
+                res.redirect('/profile')
+                }
             }
-        }
-    );
-});
+        )
+    }
+})
 
-router.post('/photo', ensureAuthenticated, (req, res) => {
+router.post('/photo', (req, res) => {
     if (req.files) {
     const profile_pic = req.files.profile_photo
     const extension = profile_pic.name.split('.').slice(-1)[0]
