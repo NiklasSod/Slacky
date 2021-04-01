@@ -15,7 +15,6 @@ var name = process.env.MONGO_USERNAME;
 var password = process.env.MONGO_PASSWORD;
 
 process.env.NODE_ENV = 'production';
-process.env.PORT = 3000;
 process.env.MONGODB_URI = 'mongodb+srv://Slacky:MongoDB123123@cluster0.r5e16.mongodb.net/slacky';
 // Connect to database
 // mongoose.connect('mongodb://localhost:27017/slacky')
@@ -75,6 +74,6 @@ io.on('connection', (socket) => {
 
 // Open connection
 const port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
     console.log(`Listening to port ${port}`)
 })
