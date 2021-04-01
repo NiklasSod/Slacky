@@ -21,7 +21,12 @@ const con = process.env.MONGODB_URI = `mongodb+srv://${name}:${password}@cluster
 
 mongoose.connect(`${con}`, {useNewUrlParser:true})
     .then(() => console.log('Connected to db'))
-    .catch(error => console.log(error))
+    .catch(error => {
+        console.log(error);
+        console.log(name);
+        console.log(password);
+    
+    })
 
 // EJS
 app.set('view engine', 'ejs')
