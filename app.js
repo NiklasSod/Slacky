@@ -14,7 +14,7 @@ const io = require('socket.io')(http)
 var name = process.env.MONGO_USERNAME;
 var password = process.env.MONGO_PASSWORD;
 
-process.env.NODE_ENV == 'production';
+process.env.NODE_ENV = 'production';
 // Connect to database
 // mongoose.connect('mongodb://localhost:27017/slacky')
 // mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.r5e16.mongodb.net/slacky`)
